@@ -109,7 +109,7 @@ giton(){
         touch .gitignore
         git add *
         git add .gitignore
-        git commit -m "Batman commit (404 Parent Commit!)"
+        git commit -m "${1:-"Initial Commit"}"
 }
 
 #-p for push 
