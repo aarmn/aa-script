@@ -54,6 +54,28 @@ AsciiArt='''
 Script='''
 #####AA Zone#####
 #2
+
+###codes,color and etc###
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'   
+    alias dir='dir --color=auto'  
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'  
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export PROMPT_COMMAND="x0=\$?;if ((\$x0 > 0)); then echo '${COLORred}# exit status = '\$x0' -- From PROMPT_COMMAND$COLORreset'; fi"
+
+###alias###
+alias lsx="ls -ltrha"
+alias KILLME="rm -rf /"
+
+###funcs###
 mkcdir ()
 {
         #Copied from stackoverflow
@@ -97,8 +119,6 @@ gitup(){
         git add *
         git commit -m "$1"
 }
-
-alias lsx="ls -ltrha"
 
 gitconfg(){
         git config --global user.name "$1"
@@ -180,11 +200,15 @@ for line in Bashrc:
 Bashrc.close()
 
 nonew="This Script Don't Have A New Version Of AA"
+installthem="To Upgrade Bash to Next Level We Suggest You to Install More Fancy Stuff too \nDo You Want to Install:"
+bashit="1.Bashit"
+omb="2.Oh My Bash"
+iowt="3.None Of Them, AA is Enough"
 donesad="Done :("
 donehappy="Done :)"
 wisechoice="Wise Choice :)"
 letsinstall="AA Is Not Installed Yet, Do You Want to Install? (Yes/No) : "
-pbbutinstalled="AA Is Not Installed Successfully (Or You Want to Trick Us ... HAHAHAHA), Do You Want to Install Anyway (Just Add Commands to End)? (Yes/No) : "
+pbbutinstalled="AA Is Not Installed Successfully (Or You Want to Trick Us ... HAHAHAHA), Do You Want to Install Anyway? (Just Add Commands to End) (Yes/No) : "
 cancelit3="3.Cancel"
 cancelit2="2.Cancel"
 uninstallit="1.Uninstall AA"
@@ -193,7 +217,7 @@ upgradeit="2.Down/Up-grade AA"
 otherver="If You Want to Upgrade Or Find It Useless, This Script Contain a diffrent ver"
 olderver="But It's Older :("
 newerver="Good News, It's New :)"
-resetshell="To Effect Changes You Need To Run A New Bash Or Source Bashrc, Do You Want To Source Bashrc (If You Are Already Running This In Bash Its Recommended)? (Yes/No) : "
+resetshell="To Effect Changes You Need To Run A New Bash Or Source Bashrc, Do You Want To Source Bashrc? (If You Are Already Running This In Bash Its Recommended) (Yes/No) : "
 
 if (TagCount==0):
 	ans=yesno(angryinput(letsinstall,func=yesno))
@@ -262,7 +286,6 @@ else:
 		if (ansreset):
 			ResetBash()
 		print(donehappy)
-
 
 print("\nThis project is in early stages and its more about ease and fun, if you like this give us star on gitlab and github, check other project, report bugs, pull request new features and so on, Wish you best, Bye Bye :)\n")
 print(end)
