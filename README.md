@@ -119,3 +119,9 @@ B: What you type with AA
  - system unused packages cleaner
  - root installation and sudo dep situations
  - port for all *nix systems
+ - online update
+ - better update system and ver check (say same version)
+ - change number choosing to interactive shell
+ - manual installation mode
+ - auto reset all terms with source .bashrc
+ - command to copy paste to install it in README.md
