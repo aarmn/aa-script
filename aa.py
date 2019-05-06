@@ -69,7 +69,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export PROMPT_COMMAND="x0=\$?;if ((\$x0 > 0)); then echo '${COLORred}# exit status = '\$x0' -- From PROMPT_COMMAND$COLORreset'; fi"
 
 ###alias###
 alias lsx="ls -ltrha"

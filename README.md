@@ -1,4 +1,4 @@
-﻿# AA-Script
+# AA-Script
 
 ## What???
 A Tiny Script by "AARMN The Limitless" to ease bash with some funcs and aliases.
@@ -85,9 +85,9 @@ B: What you type with AA
 
     A:
     git add *
-    git commit -m "$1"
+    git commit -m "example"
     B:
-    gitup
+    gitup "example"
 
 **gitup**
 
@@ -113,7 +113,6 @@ B: What you type with AA
     gitconf "example name" "example email"
 
 ## Soon
- - Delete gitconfg
  - rmdirx rename to rmx
  - giton change commit
  - gitup add hidden files too
