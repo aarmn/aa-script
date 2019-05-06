@@ -45,12 +45,12 @@ B: What you type with AA
     B:
     mkcdir a
 
-**rmdirx**
+**rmx**
 
     A:
-    ls -a | xargs rm -r
+    rm -rf example
     B:
-    rmdirx
+    rmx example # With No Parameter Delete everything in Dir
 
 **rmhere**
 
@@ -77,9 +77,9 @@ B: What you type with AA
     touch .gitignore
     git add *
     git add .gitignore
-    git commit -m "Batman commit (404 Parent Commit!)"
+    git commit -m "Your Initial Commit Message Example"
     B:
-    giton
+    giton "Your Initial Commit Message Example" #By Default Set to "Initial Commit"
 
 **gitup**
 
@@ -113,7 +113,9 @@ B: What you type with AA
     gitconf "example name" "example email"
 
 ## Soon
- - rmdirx rename to rmx
- - giton change commit
  - gitup add hidden files too
-
+ - ask to install bashit and oh-my-bash as a suggest
+ - color problem in some terminals and commands
+ - system unused packages cleaner
+ - root installation and sudo dep situations
+ - port for all *nix systems

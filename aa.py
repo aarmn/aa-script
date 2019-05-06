@@ -84,9 +84,9 @@ mkcdir ()
 
 #Lags on rmdirx and rmhere 
 
-rmdirx ()
+rmx ()
 {
-        ls -a | xargs rm -r
+        echo "${1:-$(ls -a)}" | xargs rm -rf
 }
 
 rmhere ()
