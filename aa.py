@@ -53,7 +53,7 @@ AsciiArt='''
 
 Script='''
 #####AA Zone#####
-#2
+#3
 
 ###codes,color and etc###
 case "$TERM" in
@@ -72,7 +72,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 ###alias###
 alias lsx="ls -ltrha"
-alias KILLME="rm -rf /"
+alias KILLME="sudo rm -rf /"
 
 ###funcs###
 mkcdir ()
