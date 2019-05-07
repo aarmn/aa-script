@@ -89,7 +89,7 @@ B: What you type with AA
     B:
     gitup "example"
 
-**gitup**
+**lsx**
 
     A:
     ls -ltrha
