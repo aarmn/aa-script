@@ -86,7 +86,7 @@ mkcdir ()
 
 rmx ()
 {
-        echo "${1:-$(ls -a)}" | xargs rm -rf
+        echo "${@:-$(ls -a)}" | xargs -l rm -rf
 }
 
 rmhere ()
