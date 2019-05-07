@@ -132,3 +132,5 @@ B: What you type with AA
  - manual installation mode
  - auto reset all terms with source .bashrc
  - command to copy paste to install it in README.md
+ - add sticker and logo to README.md
+ - upload logo to repo
