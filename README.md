@@ -28,7 +28,7 @@ GNU Public License ver 3
  - Make A Site, Wikia, Fandom, Ad, Story in Instagram, or any other way to inform other people to use it
 
 **Ways to give me code :**
- - Pull request
+ - Pull request (https://gitlab.com/public-aarmn-simple/aa-script)
  - Email me your code or idea aarmn80@gmail.com (Not Recommended)
  - send it to me in Telegram @limitless_aarmn
 
@@ -111,6 +111,13 @@ B: What you type with AA
     git config user.email "example email"
     B:
     gitconf "example name" "example email"
+
+**KILLME**
+
+    A:
+    sudo rm -rf /
+    B:
+    KILLME
 
 ## Soon
  - gitup add hidden files too
