@@ -214,8 +214,6 @@ B:
 
 ## Soon
 
-- gitup add hidden files too
-
 - ask to install bashit and oh-my-bash as a suggest
 
 - color problem in some terminals and commands
@@ -234,6 +232,4 @@ B:
 
 - auto reset all terms with source .bashrc
 
-- add sticker and logo to README.md
-
-- upload logo to repo
+- add badage

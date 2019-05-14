@@ -53,7 +53,7 @@ AsciiArt='''
 
 Script='''
 #####AA Zone#####
-#3
+#4
 
 ###codes,color and etc###
 case "$TERM" in
@@ -70,11 +70,16 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+NOCOLOR="\033[0m"
+
 ###alias###
 alias lsx="ls -ltrha"
 alias KILLME="sudo rm -rf /"
 
 ###funcs###
+
 mkcdir ()
 {
         #Copied from stackoverflow
@@ -82,19 +87,40 @@ mkcdir ()
         cd -P -- "$1"
 }
 
-#Lags on rmdirx and rmhere 
-
 rmx ()
 {
-        echo "${@:-$(ls -a)}" | xargs -l rm -rf
+	echo -e "${YELLOW}"
+	pwd
+	echo -e "${NOCOLOR}"
+	echo -e "${RED}"
+	ls -ltha | head -n 10
+        varnumline=$(($(ls -la | wc -l)-10))
+	if (( varnumline > 0 ))
+	then
+	echo -e "and $varnumline more"
+	fi
+	echo -e "${NOCOLOR}"
+	printf "Are you Sure (Type y for continue): "
+	read answertodel
+	if [ "$answertodel" = "y" ] || [ "$answertodel" = "Y" ]
+	then
+                echo "${@:-$(ls -a)}" | xargs -l rm -rf
+	else
+                echo -e "${RED}Operation cancelled${NOCOLOR}"
+		return 1
+        fi
+	return 0
 }
 
 rmhere ()
 {
         DELHEREPATH=$PWD
-        rmdirx
-        cd ..
-        rmdir $DELHEREPATH
+        rmx
+	if [ "$?" -eq "0" ]
+	then
+	cd ..
+	fi
+	rmdir $DELHEREPATH
 }
 
 fexe (){
@@ -115,8 +141,13 @@ giton(){
 #-p for push 
 
 gitup(){
-        git add *
-        git commit -m "$1"
+        git add . 
+	if [[ "$1" = "" ]]
+	then
+	git commit
+	else
+        git commit -m $1
+	fi
 }
 
 gitconfg(){
