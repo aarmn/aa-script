@@ -1,76 +1,146 @@
+
 # AA-Script
 
+  
+
 ## What???
+
 A Tiny Script by "AARMN The Limitless" to ease bash with some funcs and aliases.
 
+## How To Install?
+
+### Fast way:
+
+ **1. By wget**
+ 
+    python3 -c "$(wget https://raw.githubusercontent.com/aarmn-simple/aa-script/master/aa.py -O -)"
+
+ **2. By cURL**
+
+    python3 -c "$(curl -fsSL https://raw.githubusercontent.com/aarmn-simple/aa-script/master/aa.py)" 
+
+### Slow way:
+
+ **1. Clone it All!**
+
+    git clone https://github.com/aarmn-simple/aa-script.git
+    cd aa-script
+    python3 aa.py
+
 ## Philosophy
- 1. Just usefull ones, not a brute force for all possible switches!
- 2. "Complex" and "Repetitve" ones only, life is short, we should optimize it, obey this can make it easier to learn and easier to code 
- 3. One file, No dependency
- 4. Robust, Try to decrese chance of overlap with installed packages commands 
- 5. Keep commands short and meaningful
+
+1. Just usefull ones, not a brute force for all possible switches!
+
+2. "Complex" and "Repetitve" ones only, life is short, we should optimize it, obey this can make it easier to learn and easier to code
+
+3. One file, No dependency
+
+4. Robust, Try to decrese chance of overlap with installed packages commands
+
+5. Keep commands short and meaningful
+
+  
 
 ## For Who???
- 1. Linux Experts
- 2. anyone who use Bash,Git and Linux alot
+
+1. Linux Experts
+
+2. anyone who use Bash,Git and Linux alot
+
+  
 
 ## License
+
 GNU Public License ver 3
 
+  
+
 ## Contribute
+
 **How? :**
- - With Your Coding Power 
- - With Your Money (ETH:0xef9e0697af2b4b9b85eda19159ce98150cb05ff7)
- - With Your Ideas for new commands (before do this read philosophy part carefully)
- - With Finding Overlaps with other packages and programs cli commands
- - With Reporting A Escapee Bug
- - With A Thanks
- - Make A Site, Wikia, Fandom, Ad, Story in Instagram, or any other way to inform other people to use it
+
+- With Your Coding Power
+
+- With Your Money (ETH:0xef9e0697af2b4b9b85eda19159ce98150cb05ff7)
+
+- With Your Ideas for new commands (before do this read philosophy part carefully)
+
+- With Finding Overlaps with other packages and programs cli commands
+
+- With Reporting A Escapee Bug
+
+- With A Thanks
+
+- Make A Site, Wikia, Fandom, Ad, Story in Instagram, or any other way to inform other people to use it
+
+  
 
 **Ways to give me code :**
- - Pull request (https://gitlab.com/public-aarmn-simple/aa-script)
- - Email me your code or idea aarmn80@gmail.com (Not Recommended)
- - send it to me in Telegram @limitless_aarmn
+
+- Pull request (https://gitlab.com/public-aarmn-simple/aa-script)
+
+- Email me your code or idea aarmn80@gmail.com (Not Recommended)
+
+- send it to me in Telegram @limitless_aarmn
+
+  
 
 ## Guide
-Because we have a few commands there is no need for a readthedocs 
-A: What you need to type before 
+
+Because we have a few commands there is no need for a readthedocs
+
+A: What you need to type before
+
 B: What you type with AA
 
+  
 **mkdir**
 
-    A:
-    mkdir a
-    cd a
-    B:
-    mkcdir a
+A:
+
+    mkdir example
+    cd example
+
+B:
+
+    mkcdir example
 
 **rmx**
 
-    A:
+A:
+
     rm -rf example
-    B:
+
+B:
+
     rmx example # With No Parameter Delete everything in Dir
 
 **rmhere**
 
-    A:
+A:
+
     cd ..
     rm -r example
-    B:
+
+B:
+
     rmhere
 
 **fexe**
 
-    A:
+A:
+
     chmod +x example
     ./example
-    B:
+
+B:
+
     fexe example
 
 **giton**
 
-    A:
+A:
+
     git init .
     touch README.md
     touch LICENSE
@@ -78,59 +148,92 @@ B: What you type with AA
     git add *
     git add .gitignore
     git commit -m "Your Initial Commit Message Example"
-    B:
-    giton "Your Initial Commit Message Example" #By Default Set to "Initial Commit"
 
+B:
+
+    giton "Your Initial Commit Message Example" #By Default Set to "Initial Commit"
+    
 **gitup**
 
-    A:
+A:
+
     git add *
     git commit -m "example"
-    B:
+
+B:
+
     gitup "example"
 
 **lsx**
 
-    A:
+A:
+
     ls -ltrha
-    B:
+
+B:
+
     lsx
 
 **gitconfg**
 
-    A:
+A:
+
     git config --global user.name "example name"
     git config --global user.email "example email"
-    B:
+
+B:
+
     gitconfg "example name" "example email"
+
+  
 
 **gitconf**
 
-    A:
+A:
+
     git config user.name "example name"
     git config user.email "example email"
-    B:
+
+B:
+
     gitconf "example name" "example email"
+
+  
 
 **KILLME**
 
-    A:
+A:
+
     sudo rm -rf /
-    B:
+
+B:
+
     KILLME
 
+  
+
 ## Soon
- - gitup add hidden files too
- - ask to install bashit and oh-my-bash as a suggest
- - color problem in some terminals and commands
- - system unused packages cleaner
- - root installation and sudo dep situations
- - port for all *nix systems
- - online update
- - better update system and ver check (say same version)
- - change number choosing to interactive shell
- - manual installation mode
- - auto reset all terms with source .bashrc
- - command to copy paste to install it in README.md
- - add sticker and logo to README.md
- - upload logo to repo
+
+- gitup add hidden files too
+
+- ask to install bashit and oh-my-bash as a suggest
+
+- color problem in some terminals and commands
+
+- system unused packages cleaner
+
+- root installation and sudo dep situations
+
+- port for all *nix systems
+
+- online update
+
+- better update system and ver check (say same version)
+
+- manual installation mode
+
+- auto reset all terms with source .bashrc
+
+- add sticker and logo to README.md
+
+- upload logo to repo
