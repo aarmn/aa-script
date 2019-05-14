@@ -157,12 +157,12 @@ B:
 
 A:
 
-    git add *
-    git commit -m "example"
+    git add .
+    git commit -m "example" 
 
 B:
 
-    gitup "example"
+    gitup "example" #Default to ask user for commit message like "git commit"
 
 **lsx**
 
@@ -213,6 +213,8 @@ B:
   
 
 ## Soon
+
+- check bash commands success funv (in stackoverflow code is ready to copy)
 
 - ask to install bashit and oh-my-bash as a suggest
 
