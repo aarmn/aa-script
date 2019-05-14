@@ -1,7 +1,7 @@
 
 # AA-Script
 
-  
+![AA-Script-Logo](https://raw.githubusercontent.com/aarmn-simple/AA-Script-Website/master/AA-Script.png)
 
 ## What???
 
