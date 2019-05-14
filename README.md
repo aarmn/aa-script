@@ -45,7 +45,7 @@ A Tiny Script by "AARMN The Limitless" to ease bash with some funcs and aliases.
 
 1. Linux Experts
 
-2. anyone who use Bash,Git and Linux alot
+2. anyone who use Bash, Git and Linux alot
 
   
 
