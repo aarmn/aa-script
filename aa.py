@@ -89,28 +89,35 @@ mkcdir ()
 
 rmx ()
 {
-	echo -e "${YELLOW}"
-	pwd
-	echo -e "${NOCOLOR}"
-	echo -e "${RED}"
-	ls -ltha | head -n 10
-        varnumline=$(($(ls -la | wc -l)-10))
-	if (( varnumline > 0 ))
-	then
-	echo -e "and $varnumline more"
-	fi
-	echo -e "${NOCOLOR}"
-	printf "Are you Sure (Type y for continue): "
-	read answertodel
-	if [ "$answertodel" = "y" ] || [ "$answertodel" = "Y" ]
-	then
-                echo "${@:-$(ls -a)}" | xargs -l rm -rf
-	else
-                echo -e "${RED}Operation cancelled${NOCOLOR}"
-		return 1
+        if [[ -z "${@}" ]]
+        then
+                echo -e "${YELLOW}"
+                pwd
+                echo -e "${NOCOLOR}"
+                echo -e "${RED}"
+                ls -ltha | head -n 10
+                varnumline=$(($(ls -la | wc -l)-10))
+                if (( varnumline > 0 ))
+                then
+                echo -e "and $varnumline more"
+                fi
+        else
+                echo -e "${RED}"
+                echo "$(ls -ltrha ${@})"
         fi
-	return 0
+        echo -e "${NOCOLOR}"
+        printf "Are you Sure (Type y for continue): "
+        read answertodel
+        if [ "$answertodel" = "y" ] || [ "$answertodel" = "Y" ]
+        then
+                echo "${@:-$(ls -a)}" | xargs -l rm -rf
+        else
+                echo -e "${RED}Operation cancelled${NOCOLOR}"
+                return 1
+        fi
+        return 0
 }
+
 
 rmhere ()
 {
