@@ -214,9 +214,7 @@ B:
 
 ## Soon
 
-- rmx single file deleting fake warn bug fix
-
-- check bash commands success funv (in stackoverflow code is ready to copy)
+- check bash commands success func (in stackoverflow code is ready to copy)
 
 - ask to install bashit and oh-my-bash as a suggest
 

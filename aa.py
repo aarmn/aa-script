@@ -118,7 +118,6 @@ rmx ()
         return 0
 }
 
-
 rmhere ()
 {
         DELHEREPATH=$PWD
