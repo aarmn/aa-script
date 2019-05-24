@@ -94,7 +94,7 @@ A: What you need to type before
 B: What you type with AA
 
   
-**mkdir**
+**mkcdir**
 
 A:
 
