@@ -214,6 +214,8 @@ B:
 
 ## Soon
 
+- add to all users mode
+
 - check bash commands success func (in stackoverflow code is ready to copy)
 
 - ask to install bashit and oh-my-bash as a suggest
