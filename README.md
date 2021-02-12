@@ -13,11 +13,11 @@ A Tiny Script by "AARMN The Limitless" to ease bash with some funcs and aliases.
 
  **1. By wget**
  
-    python3 -c "$(wget https://raw.githubusercontent.com/aarmn-simple/aa-script/master/aa.py -O -)"
+    python3 -c "$(wget https://raw.githubusercontent.com/aarmn/aa-script/master/aa.py -O -)"
 
  **2. By cURL**
 
-    python3 -c "$(curl -fsSL https://raw.githubusercontent.com/aarmn-simple/aa-script/master/aa.py)" 
+    python3 -c "$(curl -fsSL https://raw.githubusercontent.com/aarmn/aa-script/master/aa.py)" 
 
 ### Slow way:
 
