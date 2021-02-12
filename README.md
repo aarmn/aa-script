@@ -1,7 +1,7 @@
 
 # AA-Script
 
-<div align="center"><img src="https://raw.githubusercontent.com/aarmn-simple/AA-Script-Website/master/AA-Script512.png" alt="AA-Script-Logo" /></div>
+<div align="center"><img src="https://raw.githubusercontent.com/aarmn/AA-Script-Website/master/AA-Script512.png" alt="AA-Script-Logo" /></div>
 
 ## What???
 
@@ -13,17 +13,17 @@ A Tiny Script by "AARMN The Limitless" to ease bash with some funcs and aliases.
 
  **1. By wget**
  
-    python3 -c "$(wget https://raw.githubusercontent.com/aarmn-simple/aa-script/master/aa.py -O -)"
+    python3 -c "$(wget https://raw.githubusercontent.com/aarmn/aa-script/master/aa.py -O -)"
 
  **2. By cURL**
 
-    python3 -c "$(curl -fsSL https://raw.githubusercontent.com/aarmn-simple/aa-script/master/aa.py)" 
+    python3 -c "$(curl -fsSL https://raw.githubusercontent.com/aarmn/aa-script/master/aa.py)" 
 
 ### Slow way:
 
  **1. Clone it All!**
 
-    git clone https://github.com/aarmn-simple/aa-script.git
+    git clone https://github.com/aarmn/aa-script.git
     cd aa-script
     python3 aa.py
 
@@ -77,7 +77,7 @@ GNU Public License ver 3
 
 **Ways to give me code :**
 
-- Pull request (https://gitlab.com/public-aarmn-simple/aa-script)
+- Pull request (https://gitlab.com/aarmn/aa-script)
 
 - Email me your code or idea aarmn80@gmail.com (Not Recommended)
 
