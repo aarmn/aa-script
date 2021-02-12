@@ -1,7 +1,7 @@
 
 # AA-Script
 
-<div align="center"><img src="https://raw.githubusercontent.com/aarmn/master/AA-Script512.png" alt="AA-Script-Logo" /></div>
+<div align="center"><img src="https://raw.githubusercontent.com/aarmn/aa-script/master/AA-Script512.png" alt="AA-Script-Logo" /></div>
 
 ## What???
 
