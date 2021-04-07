@@ -3,7 +3,9 @@
 
 <div align="center"><img src="https://raw.githubusercontent.com/aarmn/aa-script/master/AA-Script512.png" alt="AA-Script-Logo" /></div>
 
-## What???
+[![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)](https://www.gnu.org/software/bash/)
+
+## What?
 
 A Tiny Script by "AARMN The Limitless" to ease bash with some funcs and aliases.
 
@@ -29,29 +31,32 @@ A Tiny Script by "AARMN The Limitless" to ease bash with some funcs and aliases.
 
 ## Philosophy
 
-1. Just usefull ones, not a brute force for all possible switches!
+1. Just usefull ones based on my opinion, not a bruteforce for all possible switches to alias, so it won't satisfy everyone but only some, but atleast help those effectivly! (Others can edit! it's MIT and the code is as simple as a code can get)
 
 2. "Complex" and "Repetitve" ones only, life is short, we should optimize it, obey this can make it easier to learn and easier to code
 
-3. One file, No dependency
 
-4. Robust, Try to decrese chance of overlap with installed packages commands
+3. One file, No dependency (a bigger version with lack of this but more features will come in sometime)
 
-5. Keep commands short and meaningful
+4. Robust, Try to decrese chance of overlap with installed packages commands, while there is no guarantee over this (Report in case you saw any major program is conflicting with our commands)
+
+5. Keep names short and meaningful
 
   
 
-## For Who???
+## For Who?
 
-1. Linux Experts
+1. "Linux Experts" whom are sick and tired of retyping switches and multiple commands in a row and also feel lazy to make their version of this
 
 2. anyone who use Bash, Git and Linux alot
+
+3. anyone who wants to get into reading bashscript, this code is FOR SURE NOT best exercise for these langs (reading some python lines made me feel a weird cringe actually and I'm sure my BashScript gonna have worth story if i dive deeper in that technology) but a cool one to check, with a "Real Production" approach 
 
   
 
 ## License
 
-GNU Public License ver 3
+MIT Public License
 
   
 
@@ -63,15 +68,15 @@ GNU Public License ver 3
 
 - With Your Money (ETH:0xef9e0697af2b4b9b85eda19159ce98150cb05ff7)
 
-- With Your Ideas for new commands (before do this read philosophy part carefully)
+- With Your Ideas for new commands (btw before this, read philosophy section carefully)
 
-- With Finding Overlaps with other packages and programs cli commands
+- With Finding Overlaps with other packages and programs cli commands (if its a major one, i try to change it asap, or put a notice here)
 
 - With Reporting A Escapee Bug
 
 - With A Thanks
 
-- Make A Site, Wikia, Fandom, Ad, Story in Instagram, or any other way to inform other people to use it
+- Make A Site, Wikia, Fandom, Ad, Story in Instagram, or any other way to inform other people to use it, I like these mortal, ifuns
 
   
 
@@ -168,7 +173,7 @@ B:
 
 A:
 
-    ls -ltrha
+    ls -ltrhAis --author --color=auto --hyperlink=always
 
 B:
 
@@ -210,7 +215,67 @@ B:
 
     KILLME
 
+
+
+**runc**
+
+A:
+
+   	gcc example.c -o example.o
+   	link example.o example
+    chmod +x example
+    ./example
+
+B:
+
+    runc example.c (even with example it would work and as default it work run main.c)
+
+
+
+**runcpp**
+
+A:
+
+   	g++ -Wno-error -fconcepts-ts example.cpp -o example.o
+   	link example.o example
+    chmod +x example
+    ./example
+
+B:
+
+    runcpp example.cpp (even with example it would work and as default it work run main.cpp)
+
+
+
+**boilc**
+
+A:
+
+    mkdir example
+    cd example
+    # make a main.c file with a basic hello world program in example folder (with printf)
+
+B:
+
+    boilc example
+
+
+
+**boilcpp**
+
+A:
+
+    mkdir example
+    cd example
+    # make a main.cpp file with a basic hello world program in example folder (with cout)
+
+B:
+
+    boilcpp example
+
   
+
+ 
 
 ## Soon
 

@@ -53,7 +53,7 @@ AsciiArt='''
 
 Script='''
 #####AA Zone#####
-#4
+#10
 
 ###codes,color and etc###
 case "$TERM" in
@@ -75,95 +75,215 @@ YELLOW="\033[1;33m"
 NOCOLOR="\033[0m"
 
 ###alias###
-alias lsx="ls -ltrha"
+alias lsx="ls -ltrhA"
 alias KILLME="sudo rm -rf /"
 
 ###funcs###
 
 mkcdir ()
 {
-        #Copied from stackoverflow
-        mkdir -p -- "$1" &&
-        cd -P -- "$1"
+    mkdir -p -- "$1" &&
+    cd -P -- "$1"
 }
 
-rmx ()
+rmx () # tmp
 {
-        if [[ -z "${@}" ]]
+	RED="\e[1;31m"
+	YELLOW="\e[1;33m"
+	NOCOLOR="\e[0m"
+	Forced="1"
+	FolderCon="1"
+
+    # "${@}"
+
+    for var in "$@"
+    do
+        if [ "$var" = "-f" ] || [ "$var" = "--force" ]
         then
-                echo -e "${YELLOW}"
-                pwd
-                echo -e "${NOCOLOR}"
-                echo -e "${RED}"
-                ls -ltha | head -n 10
-                varnumline=$(($(ls -la | wc -l)-10))
-                if (( varnumline > 0 ))
-                then
-                echo -e "and $varnumline more"
-                fi
-        else
-                echo -e "${RED}"
-                echo "$(ls -ltrha ${@})"
+            Forced="0"
         fi
-        echo -e "${NOCOLOR}"
-        printf "Are you Sure (Type y for continue): "
-        read answertodel
-        if [ "$answertodel" = "y" ] || [ "$answertodel" = "Y" ]
-        then
-                echo "${@:-$(ls -a)}" | xargs -l rm -rf
-        else
-                echo -e "${RED}Operation cancelled${NOCOLOR}"
-                return 1
+    done
+
+	echo -e "${YELLOW}"
+	pwd
+	echo -e "${NOCOLOR}"
+	echo -e "${RED}"
+
+    lsx -lAd "${@}" | head -n 10
+    ret=$?
+    varnumline=$(($(ls -lAd "${@}" | wc -l)-10))
+    if (( varnumline > 0 ))
+    then
+        echo -e "and $varnumline more"
+    fi
+	echo -e "${NOCOLOR}"
+
+	if [ "$ret" -eq "0" ]
+	then
+		if [ "$Forced" -eq "0" ]
+		then
+			answertodel="y"
+            echo 
+		else
+            printf "Are you Sure (Type y for continue): "
+			read answertodel
+		fi
+	else
+		answertodel="Danger"
+	fi
+	if [ "$answertodel" = "y" ] || [ "$answertodel" = "Y" ]
+	then
+        echo "${@:-$(ls -A)}" | xargs -l rm -rf
+	else
+        echo -e "${RED}Operation cancelled${NOCOLOR}"
+		return 1
         fi
-        return 0
+	return 0
 }
 
 rmhere ()
 {
-        DELHEREPATH=$PWD
-        rmx
+    RED="\e[1;31m"
+	YELLOW="\e[1;33m"
+	NOCOLOR="\e[0m"
+    DELHEREPATH=$PWD
+    echo -e "${YELLOW}"
+    echo "Files which gonna be deleted:"
+    echo -e "${NOCOLOR}"
+    echo -e "${RED}"
+    lsx
+    echo -e "${NOCOLOR}"
+    rmx
 	if [ "$?" -eq "0" ]
 	then
-	cd ..
+	    cd ..
+        rmdir $DELHEREPATH
 	fi
-	rmdir $DELHEREPATH
 }
 
 fexe (){
-        chmod +x "$1"
-        ./"$1"
+    chmod +x "$1"
+    ./"$1"
 }
 
 giton(){
-        git init .
-        touch README.md
-        touch LICENSE
-        touch .gitignore
-        git add *
-        git add .gitignore
-        git commit -m "${1:-"Initial Commit"}"
+    git init .
+    touch README.md
+    touch LICENSE
+    touch .gitignore
+    git add *
+    git add .gitignore
+    git commit -m "${1:-"Initial Commit"}"
 }
 
 #-p for push 
 
 gitup(){
-        git add . 
+    git add . 
 	if [[ "$1" = "" ]]
 	then
-	git commit
+	    git commit
 	else
         git commit -m $1
 	fi
 }
 
 gitconfg(){
-        git config --global user.name "$1"
-        git config --global user.email "$2"
+    git config --global user.name "$1"
+    git config --global user.email "$2"
 }
 
 gitconf(){
-        git config user.name "$1"
-        git config user.email "$2"
+    git config user.name "$1"
+    git config user.email "$2"
+}
+
+boilcpp(){
+	z=$1
+	if [[ "$z" = "" ]]
+    then
+        z="main"
+	fi
+	if [[ -d "$z" ]]
+	then
+		echo "a dir with this name exist! try another name or delete it by \"rm -rf $z\" "
+		return -1
+	fi
+    mkdir "$z"
+	cd "$z"
+    ############################################### DEFAULT CODE
+	echo "#include <iostream>"               >> main.cpp 
+	echo ""                                  >> main.cpp
+	echo "// using namespace std;"           >> main.cpp
+	echo ""                                  >> main.cpp
+	echo "int main(int argc, char *argv[]){" >> main.cpp
+	echo "    std::cout << \"AA is OOF\";"   >> main.cpp
+	echo "    return 0;"                     >> main.cpp
+	echo "}"                                 >> main.cpp
+	###############################################	
+}
+
+boilc(){
+	z=$1
+	if [[ "$z" = "" ]]
+    then
+        z="main"
+	fi
+	if [[ -d "$z" ]]
+	then
+		echo "a dir with this name exist! try another name or delete it by \"rm -rf $z\" "
+		return -1
+	fi
+    mkdir "$z"
+	cd "$z"
+    ############################################### DEFAULT CODE
+	echo "#include <iostream>"               >> main.c
+	echo ""                                  >> main.c
+	echo "int main(int argc, char *argv[]){" >> main.c
+	echo "    printf(\"AA is OOF\");"        >> main.c
+	echo "    return 0;"                     >> main.c
+	echo "}"                                 >> main.c
+    ############################################### 
+}
+
+runc(){
+	z=$1
+	if [[ "${z##*.}" = "c" ]]
+	then
+		z="${z%.*}" 
+	fi
+	if [[ "$z" = "" ]]
+    then
+        z="main"
+	fi
+	rm "$z.o" "$z" > /dev/null 2>&1
+   	gcc "$z.cpp" -o "$z.o" #C flags
+   	link "$z.o" "$z"
+    chmod +x "$z"
+    echo ; echo
+    echo "##################### Program Start #####################"
+    echo
+    ./"$z"
+}
+
+runcpp(){
+	z=$1
+	if [[ "${z##*.}" = "cpp" ]]
+	then
+		z="${z%.*}" 
+	fi
+	if [[ "$z" = "" ]]
+    then
+        z="main"
+	fi
+	rm "$z.o" "$z" > /dev/null 2>&1
+   	g++ -Wno-error -std=c++20 -fconcepts-ts "$z.cpp" -o "$z.o" #C++ flags / Bleeding edge features / take a look at https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html
+   	link "$z.o" "$z"
+    chmod +x "$z"
+    echo ; echo
+    echo "##################### Program Start #####################"
+    echo
+    ./"$z"
 }
 
 #####AA Zone#####
