@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import shutil
 import platform
 import subprocess
 from time import sleep
@@ -31,9 +32,9 @@ def angryinput(text="",list=None,func=None):
     
 def ResetBash():
 	print("\n So Run: source ~/.bashrc \n")
-	sleep(0.5)
+	sleep(4)
     
-AsciiArt='''
+AsciiArt=r'''
      ___           ___      
     /   \         /   \     
    /  ^  \       /  ^  \    
@@ -46,14 +47,14 @@ AsciiArt='''
    |   (----`|  |__   `---|  |----`|  |  |  | |  |_)  | 
     \   \    |   __|      |  |     |  |  |  | |   ___/  
 .----)   |   |  |____     |  |     |  `--'  | |  |      
-|_______/    |_______|    |__|      \______/  | _|      
+|_______/    |_______|    |__|      \______/  |__|      
                                                         
 
 '''
 
-Script='''
+Script=r'''
 #####AA Zone#####
-#10
+#11
 
 ###codes,color and etc###
 case "$TERM" in
@@ -70,13 +71,10 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-RED="\033[1;31m"
-YELLOW="\033[1;33m"
-NOCOLOR="\033[0m"
-
 ###alias###
-alias lsx="ls -ltrhA"
+alias lsx="ls -ltrhAi --author --color=auto --hyperlink=always -s"
 alias KILLME="sudo rm -rf /"
+alias LAGME=":(){ :|: & };:"
 
 ###funcs###
 
@@ -86,15 +84,14 @@ mkcdir ()
     cd -P -- "$1"
 }
 
-rmx () # tmp
+rmx ()
 {
+
 	RED="\e[1;31m"
 	YELLOW="\e[1;33m"
 	NOCOLOR="\e[0m"
 	Forced="1"
 	FolderCon="1"
-
-    # "${@}"
 
     for var in "$@"
     do
@@ -217,7 +214,7 @@ boilcpp(){
 	echo "// using namespace std;"           >> main.cpp
 	echo ""                                  >> main.cpp
 	echo "int main(int argc, char *argv[]){" >> main.cpp
-	echo "    std::cout << \"AA is OOF\";"   >> main.cpp
+	echo "    std::cout << \"AA is OOF\\n\";"   >> main.cpp
 	echo "    return 0;"                     >> main.cpp
 	echo "}"                                 >> main.cpp
 	###############################################	
@@ -237,10 +234,10 @@ boilc(){
     mkdir "$z"
 	cd "$z"
     ############################################### DEFAULT CODE
-	echo "#include <iostream>"               >> main.c
+	echo "#include <stdio.h>"               >> main.c
 	echo ""                                  >> main.c
 	echo "int main(int argc, char *argv[]){" >> main.c
-	echo "    printf(\"AA is OOF\");"        >> main.c
+	echo "    printf(\"AA is OOF\\n\");"        >> main.c
 	echo "    return 0;"                     >> main.c
 	echo "}"                                 >> main.c
     ############################################### 
@@ -257,7 +254,7 @@ runc(){
         z="main"
 	fi
 	rm "$z.o" "$z" > /dev/null 2>&1
-   	gcc "$z.cpp" -o "$z.o" #C flags
+   	gcc -std=c2x "$z.c" -o "$z.o" #C flags / Bleeding edge features
    	link "$z.o" "$z"
     chmod +x "$z"
     echo ; echo
@@ -286,10 +283,12 @@ runcpp(){
     ./"$z"
 }
 
+#FUTURE : Online Update
+
 #####AA Zone#####
 '''
 
-#FUTURE : Online Update
+
 
 print(back+cyan+AsciiArt)
 print("A Tiny Script By AARMN The Limitless To Ease Bash With Some Funcs And Aliases\n")
@@ -443,6 +442,11 @@ else:
 			ResetBash()
 		print(donehappy)
 
-print("\nThis project is in early stages and its more about ease and fun, if you like this give us star on gitlab and github, check other project, report bugs, pull request new features and so on, Wish you best, Bye Bye :)\n")
-print(end)
-print('\n')
+print(end + "\033[2J" + "\033[1;1H")
+cols=shutil.get_terminal_size((80, 20)).columns
+print()
+print("This project is more about ease and fun, if you like this give us star on gitlab and github, check my other projects, report bugs, pull request new features and so on".center(cols))
+print("Wish you bests! Have a good day :)".center(cols))
+print()
+print()
+print()
