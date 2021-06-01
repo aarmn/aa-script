@@ -29,11 +29,19 @@ def angryinput(text="",list=None,func=None):
 				continue
 		return tt
             
-    
-def ResetBash():
-	print("\n So Run: source ~/.bashrc \n")
-	sleep(4)
-    
+def DetectShell():
+	Shell = os.popen('echo $SHELL').read()
+	if('zsh' in Shell):
+		return '.zshrc'
+	return '.bashrc'
+
+def ResetShell():
+	if(DetectShell() == '.bashrc'):
+		print("\n So Run: source ~/.bashrc \n")
+		sleep(4)
+	elif(DetectShell() == '.zshrc'):
+		print("\n So Run: source ~/.zshrc \n")
+		sleep(4)
 AsciiArt=r'''
      ___           ___      
     /   \         /   \     
@@ -288,12 +296,6 @@ runcpp(){
 #####AA Zone#####
 '''
 
-def DetectShell():
-	Shell = os.popen('echo $SHELL').read()
-	if('zsh' in Shell):
-		return '.zshrc'
-	return '.bashrc'
-
 print(back+cyan+AsciiArt)
 print("A Tiny Script By AARMN The Limitless To Ease Bash With Some Funcs And Aliases\n")
 
@@ -334,7 +336,6 @@ WithoutScript=BashrcString[0:StartScript]+BashrcString[EndScript+17:-1]
 InstalledScript=BashrcString[StartScript:EndScript+17]
 TagCount=0
 
-
 def InstallScript():
 	try:
 		Shell=open(os.path.join(Home,DetectShell()),"a")
@@ -343,6 +344,24 @@ def InstallScript():
 		exit()
 	Shell.write(Script)
 	Shell.close()
+
+def InstallExtra():
+	print(letsinstall)
+	if(DetectShell() == '.bashrc'):
+		print(omb)
+		print(iowt)
+		OptionList = ['0','1']
+	elif(DetectShell() == '.zshrc'):
+		print(omz)
+		print(iowt)
+		OptionList = ['0','1']
+	ExtraTools = int(angryinput(list=OptionList))
+	if(DetectShell() == '.bashrc'):
+		if(ExtraTools == 1):
+			os.system('sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"')
+	elif(DetectShell() == '.zshrc'):
+		if(ExtraTools == 1):
+			os.system('sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"')
 
 def UninstallScript():
 	try:
@@ -369,10 +388,10 @@ Shell.close()
 
 nonew="This Script Don't Have A New Version Of AA"
 installthem="To Upgrade Bash to Next Level We Suggest You to Install More Fancy Stuff too \nDo You Want to Install:"
-bashit="1.Bashit"
-omb="2.Oh My Bash"
-omz = "3.Oh My Zsh"
-iowt="3.None Of Them, AA is Enough"
+omb="1.Oh My Bash"
+bashit="2.Bashit"
+omz = "1.Oh My Zsh"
+iowt="0.None Of Them, AA is Enough"
 donesad="Done :("
 donehappy="Done :)"
 wisechoice="Wise Choice :)"
@@ -394,7 +413,8 @@ if (TagCount==0):
 		InstallScript()
 		ansreset=yesno(angryinput(resetshell,func=yesno))
 		if (ansreset):
-			ResetBash()
+			ResetShell()
+		InstallExtra()
 		print(donehappy)
 elif (TagCount==1):
 	ans=yesno(angryinput(pbbutinstalled,func=yesno))
@@ -402,7 +422,7 @@ elif (TagCount==1):
 		InstallScript()
 		ansreset=yesno(angryinput(resetshell,func=yesno))
 		if (ansreset):
-			ResetBash()
+			ResetShell()
 		print(donehappy)
 elif (TagCount==2):
 	if (('\n'+InstalledScript+'\n')==Script):
@@ -415,7 +435,7 @@ elif (TagCount==2):
 			UninstallScript()
 			ansreset=yesno(angryinput(resetshell,func=yesno))
 			if (ansreset):
-				ResetBash()
+				ResetShell()
 			print(donesad)
 		else:
 			print(wisechoice)
@@ -438,14 +458,14 @@ elif (TagCount==2):
 			UninstallScript()
 			ansreset=yesno(angryinput(resetshell,func=yesno))
 			if (ansreset):
-				ResetBash()
+				ResetShell()
 			print(donesad)
 		if (ans2==2):
 			UninstallScript()
 			InstallScript()
 			ansreset=yesno(angryinput(resetshell,func=yesno))
 			if (ansreset):
-				ResetBash()
+				ResetShell()
 			print(donehappy)
 else:
 	ans=yesno(angryinput(pbbutinstalled,func=yesno))
@@ -453,7 +473,7 @@ else:
 		InstallScript()
 		ansreset=yesno(angryinput(resetshell,func=yesno))
 		if (ansreset):
-			ResetBash()
+			ResetShell()
 		print(donehappy)
 
 print(end + "\033[2J" + "\033[1;1H")
