@@ -288,7 +288,11 @@ runcpp(){
 #####AA Zone#####
 '''
 
-
+def DetectShell():
+	Shell = os.popen('echo $SHELL').read()
+	if('zsh' in Shell):
+		return '.zshrc'
+	return '.bashrc'
 
 print(back+cyan+AsciiArt)
 print("A Tiny Script By AARMN The Limitless To Ease Bash With Some Funcs And Aliases\n")
@@ -296,49 +300,58 @@ print("A Tiny Script By AARMN The Limitless To Ease Bash With Some Funcs And Ali
 if (platform.system()!="Linux"):
 	print("Installer Work Only On Gnu\Linux OS , If You Have Bash Installed In Your OS,  Copy Script Var From Source to Your .bashrc File In Home Folder Of Your OS")
 	exit()
-
-bash=str(subprocess.check_output(["bash","--version"])).find("GNU bash")
-if (bash==-1):
-	print("There Is No Bash In Your System PATH , Try to Install Or Reinstall It")
-	exit()
-
+if(DetectShell() == '.bashrc'):
+	bash=str(subprocess.check_output(["bash","--version"])).find("GNU bash")
+	if (bash==-1):
+		print("There Is No Bash In Your System PATH , Try to Install Or Reinstall It")
+		exit()
+else:
+	zsh=str(subprocess.check_output(["zsh","--version"])).find("zsh")
+	if (zsh==-1):
+		print("your default shell is zsh but There Is No zsh In Your System PATH , Try to Install Or Reinstall It")
+		exit()
 Home=os.path.expanduser("~")
 
 try:
-	Bashrc=open(os.path.join(Home,".bashrc"),"r")
+	Shell=open(os.path.join(Home,DetectShell()),"r")
 except IOError:
-	ans3=yesno(angryinput("You Don't Have A Bashrc, Can I Create One? (Yes/No)",func=yesno))
+	if(DetectShell() == '.bashrc'):
+		ans3=yesno(angryinput("You Don't Have A .bashrc, Can I Create One? (Yes/No)",func=yesno))
+	elif(DetectShell() == '.zshrc'):
+		ans3=yesno(angryinput("You Don't Have A .zshrc, Can I Create One? (Yes/No)",func=yesno))
 	if not (ans3):
             exit()
-	Bashrc=open(os.path.join(Home,".bashrc"),"w+")
-	Bashrc.close()
+	Shell=open(os.path.join(Home,DetectShell()),"w+")
+	Shell.close()
 
-Bashrc=open(os.path.join(Home,".bashrc"),"r")
+Shell=open(os.path.join(Home,DetectShell()),"r")
 ans=None
-BashrcString=Bashrc.read()
-Bashrc.close()
+BashrcString=Shell.read()
+Shell.close()
 StartScript=BashrcString.find('#####AA Zone#####\n')
 EndScript=BashrcString.find('#####AA Zone#####\n',StartScript+1)
 WithoutScript=BashrcString[0:StartScript]+BashrcString[EndScript+17:-1]
 InstalledScript=BashrcString[StartScript:EndScript+17]
 TagCount=0
 
+
 def InstallScript():
 	try:
-		Bashrc=open(os.path.join(Home,".bashrc"),"a")
+		Shell=open(os.path.join(Home,DetectShell()),"a")
 	except IOError:
-		print("I Think Bashrc Is Write Protect, Fix It And Run Code Again")
+		print("I Think Shell Is Write Protect, Fix It And Run Code Again")
 		exit()
-	Bashrc.write(Script)
-	Bashrc.close()
+	Shell.write(Script)
+	Shell.close()
+
 def UninstallScript():
 	try:
-		Bashrc=open(os.path.join(Home,".bashrc"),"w")
+		Shell=open(os.path.join(Home,DetectShell()),"w")
 	except IOError:
-		print("I Think Bashrc Is Write Protect, Fix It And Run Code Again")
+		print("I Think Shell Is Write Protect, Fix It And Run Code Again")
 		exit()
-	Bashrc.write(WithoutScript)
-	Bashrc.close()
+	Shell.write(WithoutScript)
+	Shell.close()
 def FindVer(start,scriptstr):
 	endline="\n"
 	ListTmpVer=list()
@@ -347,17 +360,18 @@ def FindVer(start,scriptstr):
 		ListTmpVer.append(scriptstr[step])
 		step+=1
 	return int(''.join(ListTmpVer))
-    
-Bashrc=open(os.path.join(Home,".bashrc"),"r")
-for line in Bashrc:
+
+Shell=open(os.path.join(Home,DetectShell()),"r")
+for line in Shell:
 	if (line=="#####AA Zone#####\n"):
 		TagCount+=1
-Bashrc.close()
+Shell.close()
 
 nonew="This Script Don't Have A New Version Of AA"
 installthem="To Upgrade Bash to Next Level We Suggest You to Install More Fancy Stuff too \nDo You Want to Install:"
 bashit="1.Bashit"
 omb="2.Oh My Bash"
+omz = "3.Oh My Zsh"
 iowt="3.None Of Them, AA is Enough"
 donesad="Done :("
 donehappy="Done :)"
@@ -367,12 +381,12 @@ pbbutinstalled="AA Is Not Installed Successfully (Or You Want to Trick Us ... HA
 cancelit3="3.Cancel"
 cancelit2="2.Cancel"
 uninstallit="1.Uninstall AA"
-newincompatver="Your Version Is Newer And Backward Incompatible Or You Have A Corrupt Version of AA In Your Bashrc,In This Situation Try Delete It Manually And Have A New Installed"
+newincompatver="Your Version Is Newer And Backward Incompatible Or You Have A Corrupt Version of AA In Your Shell,In This Situation Try Delete It Manually And Have A New Installed"
 upgradeit="2.Down/Up-grade AA"
 otherver="If You Want to Upgrade Or Find It Useless, This Script Contain a diffrent ver"
 olderver="But It's Older :("
 newerver="Good News, It's New :)"
-resetshell="To Effect Changes You Need To Run A New Bash Or Source Bashrc, Do You Want To Source Bashrc? (If You Are Already Running This In Bash Its Recommended) (Yes/No) : "
+resetshell="To Effect Changes You Need To Run A New Bash Or Source Shell, Do You Want To Source Shell? (If You Are Already Running This In Bash Its Recommended) (Yes/No) : "
 
 if (TagCount==0):
 	ans=yesno(angryinput(letsinstall,func=yesno))
