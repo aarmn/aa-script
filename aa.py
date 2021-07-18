@@ -274,7 +274,7 @@ runcpp(){
         z="main"
 	fi
 	rm "$z.o" "$z" > /dev/null 2>&1
-   	g++ -Wno-error -std=c++20 -fconcepts-ts "$z.cpp" -o "$z.o" #C++ flags / Bleeding edge features / take a look at https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html
+   	g++ -Wno-error -std=c++2a -fconcepts "$z.cpp" -o "$z.o" #C++ flags / Bleeding edge features / take a look at https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html
    	link "$z.o" "$z"
     chmod +x "$z"
     echo ; echo
