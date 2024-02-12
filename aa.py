@@ -75,6 +75,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 alias lsx="ls -ltrhAi --author --color=auto --hyperlink=always -s"
 alias KILLME="sudo rm -rf /"
 alias LAGME=":(){ :|: & };:"
+alias myip="curl ifconfig.co"
 
 ###funcs###
 
