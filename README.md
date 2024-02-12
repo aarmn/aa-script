@@ -273,7 +273,17 @@ B:
 
     boilcpp example
 
-  
+
+
+**myip**
+
+A:
+
+    ip address # or `ifconfig` and looking up and down for public ip and yet not being 100% sure, or googling for ip, or running `curl ifconfig.co` and similar stuff, which is what we do.
+
+B:
+
+    myip
 
  
 
